@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008110002) do
+ActiveRecord::Schema.define(version: 20141008114310) do
 
   create_table "cart_items", force: true do |t|
     t.integer "owner_id"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20141008110002) do
     t.string   "fee"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
 
   add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree

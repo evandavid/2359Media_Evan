@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
+  get   'home/index'
+  get   'pay'       => 'home#pay',      as: :pay
+  post  'proccess'  => 'home#proccess', as: :proccess
+
+  devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

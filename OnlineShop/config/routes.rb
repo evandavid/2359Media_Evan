@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   get 'product/:id'                 => 'home#detail',       as: :product_detail
   get 'chart/:id/product'           => 'home#cart',         as: :product_cart
   get 'chart/detail'                => 'home#cart_detail',  as: :detail_cart
+  get 'purchase'                    => 'home#purchase',     as: :purchase
   get 'chart/delete/:id/:item_id'   => 'home#delete_cart',  as: :delete_cart
+  get 'failed'                      => 'home#failed',       as: :failed
+  get 'success_pay'                 => 'home#success_pay',  as: :success_pay
 
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,22 @@
+<h1>Pay Order</h1>
+<div class="row">
+    <div class='col-md-12'>
+        <% flash.each do |type, message| %>
+          <div class="alert alert-<%= bootstrap_class_for(type) %> fade in">
+            <button class="close" data-dismiss="alert">×</button>
+            <%= message %>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-md-12">
+        <p>input your TOTP (for development purpose)</p>
+        <form action="/proccess" method="POST">
+            <input type="text" name="my_token" class='form-control' plceholder="ROTP">
+            <input type="hidden" name="prev_token" value="<%=params['my_token']%>">
+            <input type="hidden" name="prev_amount" value="<%=params['amount']%>">
+            <small><em>TOTP CODE: <%=@totp_now%></em></small>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

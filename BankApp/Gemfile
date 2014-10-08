@@ -16,7 +16,9 @@ gem 'spring',        group: :development
 
 
 #ADDED Gems
-gem 'therubyracer'
+gem "therubyracer"
+gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'rotp'
 gem 'rails_admin'
+gem 'devise'

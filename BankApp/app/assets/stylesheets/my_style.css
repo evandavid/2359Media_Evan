@@ -1,0 +1,23 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.product-wrapper img {
+    /*border: 1px dashed #aaa;*/
+    text-align: center;
+}
+
+.product-wrapper a {
+    text-align: left;
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.product-wrapper p {
+    margin: 0;
+}

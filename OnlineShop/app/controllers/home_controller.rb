@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   before_filter :extract_shopping_cart
+  before_filter :auth_first, only: %w(purchase)
 
   def index
     @products = Product.available
@@ -26,9 +27,38 @@ class HomeController < ApplicationController
     redirect_to request.referer
   end
 
+  def purchase
+    if @cart.total.to_i > 0
+        transaction = Transaction.add_data @cart, current_user
+        redirect_to "http://localhost:4000/pay?my_token="+transaction.token+"&amount="+@cart.total.to_i.to_s
+    else
+        redirect_to root_path, flash: {warning: "Oops, your cart is empty."}
+    end
+  end
+
+  def failed
+    redirect_to root_path, flash: {warning: "Oops, you cannot complete this purcase. "+params[:reason]}
+  end
+
+  def success_pay
+    transaction = Transaction.find_by_token(params[:my_token])
+    transaction.done = true
+    transaction.save
+
+    @cart.clear
+    redirect_to root_path, flash: {success: "Your order purchased successfully."}
+  end
+
   private
   def get_product_by_id(id)
       Product.find_by_id id
+  end
+
+  private
+  def auth_first
+    unless current_user
+        redirect_to root_path, flash: {warning: "Oops, you have to logged in first."}
+    end
   end
 
   private
