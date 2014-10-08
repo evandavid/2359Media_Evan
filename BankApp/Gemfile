@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -16,5 +16,7 @@ gem 'spring',        group: :development
 
 
 #ADDED Gems
+gem 'therubyracer'
+gem "twitter-bootstrap-rails"
 gem 'rotp'
 gem 'rails_admin'
