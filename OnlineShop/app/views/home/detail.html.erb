@@ -1,0 +1,13 @@
+<h1>Detail Product</h1>
+<div class="row">
+    <div class="col-md-12">
+        <%= image_tag @product.image.url(:medium) %>
+        <h4><%= @product.name%></h4>
+        <p>Price: $<%= @product.price%></p>
+        <p>Quantity: <%= @product.quantity%></p>
+        <a href="<%= product_cart_path(product.id) %>" class="btn btn-primary btn-sm">add to chart</a>
+        <br>
+        <br>
+        <p><%= raw @product.description%></p>
+    </div>
+</div>

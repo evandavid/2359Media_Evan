@@ -1,2 +1,15 @@
 <h1>List Product</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+    <% @products.each do |product| %>
+        <div class="col-md-3">
+            <div class="product-wrapper">
+                <%= image_tag product.image.url(:medium) %>
+                <br>
+                <a href="<%= product_detail_path(product.id)%>"><%= product.name %></a>
+                <p>Price: $<%= product.price%></p>
+                <p>Quantity: <%= product.quantity%></p>
+                <a href="<%= product_cart_path(product.id) %>" class="btn btn-primary btn-sm">add to chart</a>
+            </div>
+        </div>
+    <% end %>
+</div>

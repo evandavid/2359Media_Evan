@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   validates :name, presence: true
-  validates :name, presence: true
+  validates :image, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
   validates :quantity, presence: true, numericality: { only_integer: true }
 
@@ -14,5 +14,9 @@ class Product < ActiveRecord::Base
   attr_accessor :delete_image
   before_validation { self.image.clear if self.delete_image == '1' }
 
-  scope :available, -> { where(quantity: '> 0') }
+  has_one :coupon
+
+  def self.available
+    where("quantity <> '0'")
+  end
 end
